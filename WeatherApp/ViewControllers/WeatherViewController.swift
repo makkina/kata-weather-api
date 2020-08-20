@@ -10,12 +10,23 @@ import UIKit
 
 class WeatherViewController: UIViewController {
 
+    @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+    @IBOutlet weak var weatherLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setupInitialView()
     }
     
     @IBAction func cityButtonPressed(_ sender: CityButtonView) {
-        
+        // TODO:
+    }
+    
+    private func setupInitialView() {
+        loader.stopAnimating()
+        weatherLabel.isHidden = false
+        weatherLabel.text = "°C"
+        weatherImageView.image = UIImage(systemName: "sun.min")
     }
 }
