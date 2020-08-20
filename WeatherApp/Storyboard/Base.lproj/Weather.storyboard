@@ -62,18 +62,27 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="contentEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Antwerp"/>
+                                        <connections>
+                                            <action selector="cityButtonPressed:" destination="BTs-Gl-8da" eventType="touchUpInside" id="WGV-tw-mWn"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmg-cK-r1S" customClass="CityButtonView" customModule="WeatherApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="86" width="374" height="76"/>
                                         <color key="backgroundColor" red="0.2542624074" green="0.45435546869999999" blue="0.34503798600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Brussels"/>
+                                        <connections>
+                                            <action selector="cityButtonPressed:" destination="BTs-Gl-8da" eventType="touchUpInside" id="veM-Wg-H1l"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYU-HD-NPH" customClass="CityButtonView" customModule="WeatherApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="172" width="374" height="76"/>
                                         <color key="backgroundColor" red="0.2542624074" green="0.45435546869999999" blue="0.34503798600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Ghent"/>
+                                        <connections>
+                                            <action selector="cityButtonPressed:" destination="BTs-Gl-8da" eventType="touchUpInside" id="qi5-FS-6Kl"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
