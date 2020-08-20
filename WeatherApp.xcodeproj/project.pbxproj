@@ -16,9 +16,10 @@
 		F01C871D24EE0B72004174A2 /* Weather.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F01C871B24EE0B72004174A2 /* Weather.storyboard */; };
 		F01C871F24EE0B74004174A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F01C871E24EE0B74004174A2 /* Assets.xcassets */; };
 		F01C872224EE0B74004174A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F01C872024EE0B74004174A2 /* LaunchScreen.storyboard */; };
-		F01C872D24EE0B74004174A2 /* WeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01C872C24EE0B74004174A2 /* WeatherAppTests.swift */; };
 		F01C873824EE0B74004174A2 /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01C873724EE0B74004174A2 /* WeatherAppUITests.swift */; };
 		F01C875724EE8423004174A2 /* CityButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01C875624EE8423004174A2 /* CityButtonView.swift */; };
+		F01C875924EE86AF004174A2 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01C875824EE86AF004174A2 /* WeatherModel.swift */; };
+		F01C875C24EE86CD004174A2 /* WeatherModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01C875B24EE86CD004174A2 /* WeatherModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,12 +57,13 @@
 		F01C872124EE0B74004174A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F01C872324EE0B74004174A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F01C872824EE0B74004174A2 /* WeatherAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F01C872C24EE0B74004174A2 /* WeatherAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppTests.swift; sourceTree = "<group>"; };
 		F01C872E24EE0B74004174A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F01C873324EE0B74004174A2 /* WeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F01C873724EE0B74004174A2 /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
 		F01C873924EE0B74004174A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F01C875624EE8423004174A2 /* CityButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityButtonView.swift; sourceTree = "<group>"; };
+		F01C875824EE86AF004174A2 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		F01C875B24EE86CD004174A2 /* WeatherModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModelTests.swift; sourceTree = "<group>"; };
 		FC38472373D53C1A66C0994D /* Pods_WeatherApp_WeatherAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp_WeatherAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -150,7 +152,7 @@
 		F01C872B24EE0B74004174A2 /* WeatherAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				F01C872C24EE0B74004174A2 /* WeatherAppTests.swift */,
+				F01C875A24EE86BB004174A2 /* Models */,
 				F01C872E24EE0B74004174A2 /* Info.plist */,
 			);
 			path = WeatherAppTests;
@@ -232,6 +234,7 @@
 		F01C875224EE782F004174A2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F01C875824EE86AF004174A2 /* WeatherModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -255,6 +258,14 @@
 			children = (
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		F01C875A24EE86BB004174A2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F01C875B24EE86CD004174A2 /* WeatherModelTests.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		FCDE39373DE390E7DE4D851C /* Frameworks */ = {
@@ -342,6 +353,7 @@
 					};
 					F01C872724EE0B74004174A2 = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 						TestTargetID = F01C871124EE0B72004174A2;
 					};
 					F01C873224EE0B74004174A2 = {
@@ -493,6 +505,7 @@
 				F01C871624EE0B72004174A2 /* AppDelegate.swift in Sources */,
 				F01C871824EE0B72004174A2 /* SceneDelegate.swift in Sources */,
 				F01C875724EE8423004174A2 /* CityButtonView.swift in Sources */,
+				F01C875924EE86AF004174A2 /* WeatherModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,7 +513,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F01C872D24EE0B74004174A2 /* WeatherAppTests.swift in Sources */,
+				F01C875C24EE86CD004174A2 /* WeatherModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,6 +718,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeatherAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
@@ -715,6 +729,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.makkina.WeatherAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeatherApp.app/WeatherApp";
@@ -727,6 +742,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeatherAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
