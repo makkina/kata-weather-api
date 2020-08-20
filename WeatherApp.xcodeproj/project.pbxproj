@@ -129,13 +129,18 @@
 		F01C871424EE0B72004174A2 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				F01C871524EE0B72004174A2 /* AppDelegate.swift */,
-				F01C871724EE0B72004174A2 /* SceneDelegate.swift */,
-				F01C871924EE0B72004174A2 /* ViewController.swift */,
-				F01C871B24EE0B72004174A2 /* Main.storyboard */,
-				F01C871E24EE0B74004174A2 /* Assets.xcassets */,
-				F01C872024EE0B74004174A2 /* LaunchScreen.storyboard */,
-				F01C872324EE0B74004174A2 /* Info.plist */,
+				F01C875424EE7839004174A2 /* Enums */,
+				F01C875324EE7834004174A2 /* Managers */,
+				F01C875224EE782F004174A2 /* Models */,
+				F01C875124EE782C004174A2 /* Networking */,
+				F01C875524EE783E004174A2 /* Protocols */,
+				F01C875024EE7827004174A2 /* Resources */,
+				F01C874F24EE7822004174A2 /* Startup */,
+				F01C874E24EE781B004174A2 /* Storyboard */,
+				F01C874D24EE7810004174A2 /* Supporting Files */,
+				F01C874C24EE780C004174A2 /* ViewModels */,
+				F01C874B24EE77FD004174A2 /* ViewControllers */,
+				F01C874A24EE77F8004174A2 /* Views */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -156,6 +161,97 @@
 				F01C873924EE0B74004174A2 /* Info.plist */,
 			);
 			path = WeatherAppUITests;
+			sourceTree = "<group>";
+		};
+		F01C874A24EE77F8004174A2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F01C874B24EE77FD004174A2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F01C871924EE0B72004174A2 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F01C874C24EE780C004174A2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F01C874D24EE7810004174A2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F01C872324EE0B74004174A2 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F01C874E24EE781B004174A2 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				F01C871B24EE0B72004174A2 /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		F01C874F24EE7822004174A2 /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				F01C871524EE0B72004174A2 /* AppDelegate.swift */,
+				F01C871724EE0B72004174A2 /* SceneDelegate.swift */,
+				F01C872024EE0B74004174A2 /* LaunchScreen.storyboard */,
+			);
+			path = Startup;
+			sourceTree = "<group>";
+		};
+		F01C875024EE7827004174A2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F01C871E24EE0B74004174A2 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F01C875124EE782C004174A2 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		F01C875224EE782F004174A2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F01C875324EE7834004174A2 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		F01C875424EE7839004174A2 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		F01C875524EE783E004174A2 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		FCDE39373DE390E7DE4D851C /* Frameworks */ = {
@@ -567,7 +663,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = WeatherApp/Info.plist;
+				INFOPLIST_FILE = "WeatherApp/Supporting FIles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -575,7 +672,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.makkina.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -585,7 +682,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = WeatherApp/Info.plist;
+				INFOPLIST_FILE = "WeatherApp/Supporting FIles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -593,7 +691,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.makkina.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
