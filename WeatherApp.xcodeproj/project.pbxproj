@@ -18,6 +18,7 @@
 		F01C872224EE0B74004174A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F01C872024EE0B74004174A2 /* LaunchScreen.storyboard */; };
 		F01C872D24EE0B74004174A2 /* WeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01C872C24EE0B74004174A2 /* WeatherAppTests.swift */; };
 		F01C873824EE0B74004174A2 /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01C873724EE0B74004174A2 /* WeatherAppUITests.swift */; };
+		F01C875724EE8423004174A2 /* CityButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01C875624EE8423004174A2 /* CityButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		F01C873324EE0B74004174A2 /* WeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F01C873724EE0B74004174A2 /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
 		F01C873924EE0B74004174A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F01C875624EE8423004174A2 /* CityButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityButtonView.swift; sourceTree = "<group>"; };
 		FC38472373D53C1A66C0994D /* Pods_WeatherApp_WeatherAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp_WeatherAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -166,6 +168,7 @@
 		F01C874A24EE77F8004174A2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F01C875624EE8423004174A2 /* CityButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				F01C871A24EE0B72004174A2 /* WeatherViewController.swift in Sources */,
 				F01C871624EE0B72004174A2 /* AppDelegate.swift in Sources */,
 				F01C871824EE0B72004174A2 /* SceneDelegate.swift in Sources */,
+				F01C875724EE8423004174A2 /* CityButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
