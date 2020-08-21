@@ -9,15 +9,17 @@
 import XCTest
 @testable import WeatherApp
 
-// MARK: - Tests
-
 class WeatherClientTests: XCTestCase {
+    
+    var networkClient: NetworkClientMock!
     
     override func setUp() {
         super.setUp()
+        networkClient = NetworkClientMock()
     }
     
     override func tearDown() {
+        networkClient = nil
         super.tearDown()
     }
     
@@ -32,7 +34,6 @@ class WeatherClientTests: XCTestCase {
     
     func testCanCallNetworkClientWithUrlString() {
         // given
-        let networkClient = NetworkClientMock()
         let weatherClient = WeatherClient(networkClient: networkClient)
         // when
         weatherClient.getWeather(with: "StadUrl") { (_ weatherModel, _ error) in }
@@ -42,7 +43,6 @@ class WeatherClientTests: XCTestCase {
     
     func testCanInvokeCompletionHandlerWithError() {
         // given
-        let networkClient = NetworkClientMock()
         networkClient.mockError = NSError.init(
             domain: "Error",
             code: 405,
@@ -64,7 +64,6 @@ class WeatherClientTests: XCTestCase {
 
     func testCanInvokeCompletionHandlerWithNil() {
         // given
-        let networkClient = NetworkClientMock()
         networkClient.mockResult = nil
         let weatherClient = WeatherClient(networkClient: networkClient)
         var weatherModel: WeatherModel? = WeatherModel(
@@ -84,7 +83,6 @@ class WeatherClientTests: XCTestCase {
 
     func testCanInvokeCompletionHandlerWithWeatherModel() {
         // swiftlint:disable force_try
-        let networkClient = NetworkClientMock()
         let encoder = JSONEncoder()
         let weatherModelDto = WeatherModelDTO(
             name: "Brussels",
