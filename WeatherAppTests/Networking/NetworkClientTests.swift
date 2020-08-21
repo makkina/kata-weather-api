@@ -38,7 +38,7 @@ class NetworkClientTests: XCTestCase {
     
     func testURLSessionReceivesUrlData() {
         // given
-        let baseUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric"
+        let baseUrl = Constants.baseURL
         let token = Secrets.openWeatherTestToken
         let city = "Antwerp"
         let urlString = "\(baseUrl)&appid=\(token)&q=\(city)"

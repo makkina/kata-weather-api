@@ -34,7 +34,7 @@ class WeatherViewController: UIViewController {
     private func setupInitialView() {
         loader.stopAnimating()
         weatherLabel.isHidden = false
-        weatherLabel.text = "°C"
+        weatherLabel.text = Constants.degreesCelcius
         weatherImageView.image = UIImage(systemName: "sun.min")
     }
 }

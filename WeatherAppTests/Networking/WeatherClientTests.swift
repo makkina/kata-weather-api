@@ -112,7 +112,7 @@ class WeatherClientTests: XCTestCase {
         var weatherModel: WeatherModel?
         let queryExpectation = XCTestExpectation(description: "Completion handler invoked with success")
         queryExpectation.expectedFulfillmentCount = 1
-        let baseUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric"
+        let baseUrl = Constants.baseURL
         let token = Secrets.openWeatherTestToken
         let city = "Brussels"
         let urlString = "\(baseUrl)&appid=\(token)&q=\(city)"

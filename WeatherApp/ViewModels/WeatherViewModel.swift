@@ -24,9 +24,9 @@ class WeatherViewModel {
     
     var weatherLabelText: String {
         guard weatherModel?.temperature != nil else {
-            return "°C"
+            return Constants.degreesCelcius
         }
-        return String(format: "%.1f °C", weatherModel!.temperature)
+        return String(format: "%.1f \(Constants.degreesCelcius)", weatherModel!.temperature)
     }
     
     var weatherLabelIsHidden: Bool {
@@ -63,7 +63,7 @@ class WeatherViewModel {
     init(weatherModel: WeatherModel?, weatherClient: WeatherClientProtocol) {
         self.weatherModel = weatherModel
         self.weatherClient = weatherClient
-        self.validCities = ["Antwerp", "Brussels", "Ghent"]
+        self.validCities = Constants.validCities
     }
     
     func fetchWeather(city: String) {
@@ -77,7 +77,7 @@ class WeatherViewModel {
         }
         
         // Create Url
-        let baseUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric"
+        let baseUrl = Constants.baseURL
         let token = Secrets.openWeatherTestToken
         let urlString = "\(baseUrl)&appid=\(token)&q=\(city)"
         
