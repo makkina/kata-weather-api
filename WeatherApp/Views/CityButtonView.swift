@@ -15,5 +15,6 @@ class CityButtonView: UIButton {
         super.awakeFromNib()
         
         self.layer.cornerRadius = 10
+        self.accessibilityIdentifier = "weatherButton \(self.tag)"
     }
 }

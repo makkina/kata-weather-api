@@ -23,8 +23,8 @@ final class WeatherClient: WeatherClientProtocol {
     func getWeather(with urlString: String, completion: @escaping ((WeatherModel?, Error?) -> Void)) {
         state = .loading
         networkClient.get(urlString: urlString) { (data, error) in
-            completion(self.createWeatherModel(from: data), error)
             self.state = .notLoading
+            completion(self.createWeatherModel(from: data), error)
         }
     }
 }

@@ -10,6 +10,11 @@ import UIKit
 
 class WeatherViewController: UIViewController {
 
+    var viewModel: WeatherViewModel = WeatherViewModel(
+        weatherModel: nil,
+        weatherClient: WeatherClient(networkClient: NetworkClient())
+    )
+    
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var weatherLabel: UILabel!
@@ -17,10 +22,13 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupInitialView()
+        viewModel.delegate = self
     }
     
     @IBAction func cityButtonPressed(_ sender: CityButtonView) {
-        // TODO:
+        if loader.isHidden {
+            viewModel.fetchWeather(city: sender.currentTitle!)
+        }
     }
     
     private func setupInitialView() {
@@ -28,5 +36,22 @@ class WeatherViewController: UIViewController {
         weatherLabel.isHidden = false
         weatherLabel.text = "°C"
         weatherImageView.image = UIImage(systemName: "sun.min")
+    }
+}
+
+// MARK: - WeatherViewModelDelegate
+
+extension WeatherViewController: WeatherViewModelDelegate {
+    
+    func willLoadData() {
+        loader.startAnimating()
+        weatherLabel.isHidden = true
+    }
+    
+    func didLoadData() {
+        loader.stopAnimating()
+        weatherLabel.isHidden = viewModel.weatherLabelIsHidden
+        weatherLabel.text = viewModel.weatherLabelText
+        weatherImageView.image = UIImage(systemName: viewModel.weatherConditionName)
     }
 }
