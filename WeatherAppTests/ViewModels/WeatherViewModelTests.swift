@@ -227,6 +227,17 @@ class WeatherViewModelTests: XCTestCase {
         // then
         XCTAssertEqual(viewModel.weatherConditionName, "cloud")
     }
+    
+    func testFetchingInvalidCityClearsOutWeatherModel() {
+        // given
+        let weatherModel = WeatherModel(conditionId: 200, cityName: "Antwerp", temperature: 20)
+        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
+        
+        // when
+        viewModel.fetchWeather(city: "Paris")
+        // then
+        XCTAssertNil(viewModel.weatherModel)
+    }
 }
 
 // MARK: - WeatherViewModelDelegate

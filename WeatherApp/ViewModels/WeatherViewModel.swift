@@ -35,7 +35,7 @@ class WeatherViewModel {
     
     var weatherConditionName: String {
         guard weatherModel?.conditionId != nil else {
-            return "cloud"
+            return "sun.min"
         }
         
         switch weatherModel!.conditionId {
@@ -71,7 +71,8 @@ class WeatherViewModel {
         
         // Check for valid city
         guard validCities.contains(city) else {
-            self.delegate?.didLoadData()
+            weatherModel = nil
+            delegate?.didLoadData()
             return
         }
         
