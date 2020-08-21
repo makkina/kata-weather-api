@@ -104,9 +104,7 @@ class WeatherClientTests: XCTestCase {
         // then
         XCTAssertEqual(weatherModel?.cityName, "Brussels")
     }
-    
-    // MARK: - Network Call
-    
+
     func testCanReturnWeatherModelFromNetwork() {
         // given
         let networkClient = NetworkClient()
@@ -130,5 +128,32 @@ class WeatherClientTests: XCTestCase {
         // then
         wait(for: [queryExpectation], timeout: 3)
         XCTAssertEqual(weatherModel?.cityName, "Brussels")
+    }
+    
+    func testWillInitiateWithStateNotLoading() {
+        let weatherClient = WeatherClient(networkClient: NetworkClient())
+        XCTAssertEqual(weatherClient.state, .notLoading)
+    }
+    
+    func testWillAlterStateToLoadingWhenFetchingWeather() {
+        // given
+        let weatherClient = WeatherClient(networkClient: NetworkClient())
+        // when
+        weatherClient.getWeather(with: "Antwerp") { (_ weatherModel, _ error) in }
+        // then
+        XCTAssertEqual(weatherClient.state, .loading)
+    }
+    
+    func testWillAlterStateToNotLoadingAfterCompletion() {
+        // given
+        let weatherClient = WeatherClient(networkClient: NetworkClient())
+        let queryExpectation = XCTestExpectation(description: "completionHandler")
+        // when
+        weatherClient.getWeather(with: "Antwerp") { (_ weatherModel, _ error) in
+            queryExpectation.fulfill()
+        }
+        // then
+        wait(for: [queryExpectation], timeout: 3)
+        XCTAssertEqual(weatherClient.state, .notLoading)
     }
 }

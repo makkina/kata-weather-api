@@ -37,6 +37,7 @@
 		F01C877E24EF1A21004174A2 /* WeatherClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01C877D24EF1A21004174A2 /* WeatherClientMock.swift */; };
 		F01C878924EFD0A6004174A2 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01C878824EFD0A6004174A2 /* WeatherViewModel.swift */; };
 		F01C878B24EFD0B3004174A2 /* WeatherViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01C878A24EFD0B3004174A2 /* WeatherViewModelTests.swift */; };
+		F01C878E24EFF9DA004174A2 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01C878D24EFF9DA004174A2 /* State.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		F01C877D24EF1A21004174A2 /* WeatherClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherClientMock.swift; sourceTree = "<group>"; };
 		F01C878824EFD0A6004174A2 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		F01C878A24EFD0B3004174A2 /* WeatherViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModelTests.swift; sourceTree = "<group>"; };
+		F01C878D24EFF9DA004174A2 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		FC38472373D53C1A66C0994D /* Pods_WeatherApp_WeatherAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp_WeatherAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -175,8 +177,8 @@
 				F01C874F24EE7822004174A2 /* Startup */,
 				F01C874E24EE781B004174A2 /* Storyboard */,
 				F01C874D24EE7810004174A2 /* Supporting Files */,
-				F01C874C24EE780C004174A2 /* ViewModels */,
 				F01C874B24EE77FD004174A2 /* ViewControllers */,
+				F01C874C24EE780C004174A2 /* ViewModels */,
 				F01C874A24EE77F8004174A2 /* Views */,
 			);
 			path = WeatherApp;
@@ -283,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				F01C876A24EEC78D004174A2 /* Secrets.swift */,
+				F01C878D24EFF9DA004174A2 /* State.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				F01C876424EEAB19004174A2 /* NetworkClient.swift in Sources */,
 				F01C875E24EE8E57004174A2 /* WeatherModelDTO.swift in Sources */,
 				F01C875924EE86AF004174A2 /* WeatherModel.swift in Sources */,
+				F01C878E24EFF9DA004174A2 /* State.swift in Sources */,
 				F01C876924EEB325004174A2 /* URLSessionProtocol.swift in Sources */,
 				F01C877624EEE34D004174A2 /* URLSessionDataTaskProtocol.swift in Sources */,
 				F01C877C24EEECFF004174A2 /* WeatherClient.swift in Sources */,

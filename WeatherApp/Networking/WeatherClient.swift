@@ -12,15 +12,19 @@ final class WeatherClient: WeatherClientProtocol {
     
     private let networkClient: NetworkClientProtocol
     private let decoder: JSONDecoder
+    var state: State
     
-    init(networkClient: NetworkClientProtocol, decoder: JSONDecoder) {
+    init(networkClient: NetworkClientProtocol, decoder: JSONDecoder, state: State) {
         self.networkClient = networkClient
         self.decoder = decoder
+        self.state = state
     }
     
     func getWeather(with urlString: String, completion: @escaping ((WeatherModel?, Error?) -> Void)) {
+        state = .loading
         networkClient.get(urlString: urlString) { (data, error) in
             completion(self.createWeatherModel(from: data), error)
+            self.state = .notLoading
         }
     }
 }
@@ -30,10 +34,10 @@ final class WeatherClient: WeatherClientProtocol {
 extension WeatherClient {
     
     convenience init(networkClient: NetworkClientProtocol) {
-        self.init(networkClient: networkClient, decoder: JSONDecoder())
+        self.init(networkClient: networkClient, decoder: JSONDecoder(), state: .notLoading)
     }
     
-    internal func createWeatherModel(from data: Data?) -> WeatherModel? {
+    private func createWeatherModel(from data: Data?) -> WeatherModel? {
         
         guard let safeData = data else { return nil }
         
