@@ -37,7 +37,7 @@ extension WeatherViewController: WeatherViewModelDelegate {
     
     func willLoadData() {
         loader.startAnimating()
-        weatherLabel.isHidden = true
+        weatherLabel.isHidden = viewModel.weatherLabelIsHidden
     }
     
     func didLoadData() {
