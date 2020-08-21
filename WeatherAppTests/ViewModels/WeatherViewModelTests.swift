@@ -145,6 +145,88 @@ class WeatherViewModelTests: XCTestCase {
         // then
         XCTAssertEqual(viewModel.weatherLabelText, "°C")
     }
+    
+    // MARK: - Test Weather Condition Name
+    
+    func testConditionName2xx() {
+        // given
+        let conditionId = Int.random(in: 200...232)
+        // when
+        let weatherModel = WeatherModel(conditionId: conditionId, cityName: "Antwerp", temperature: 20)
+        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
+        // then
+        XCTAssertEqual(viewModel.weatherConditionName, "cloud.bolt")
+    }
+    
+    func testConditionName3xx() {
+        // given
+        let conditionId = Int.random(in: 300...321)
+        // when
+        let weatherModel = WeatherModel(conditionId: conditionId, cityName: "Antwerp", temperature: 20)
+        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
+        // then
+        XCTAssertEqual(viewModel.weatherConditionName, "cloud.drizzle")
+    }
+    
+    func testConditionName5xx() {
+        // given
+        let conditionId = Int.random(in: 500...521)
+        // when
+        let weatherModel = WeatherModel(conditionId: conditionId, cityName: "Antwerp", temperature: 20)
+        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
+        // then
+        XCTAssertEqual(viewModel.weatherConditionName, "cloud.rain")
+    }
+    
+    func testConditionName6xx() {
+        // given
+        let conditionId = Int.random(in: 600...622)
+        // when
+        let weatherModel = WeatherModel(conditionId: conditionId, cityName: "Antwerp", temperature: 20)
+        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
+        // then
+        XCTAssertEqual(viewModel.weatherConditionName, "cloud.snow")
+    }
+    
+    func testConditionName7xx() {
+        // given
+        let conditionId = Int.random(in: 701...781)
+        // when
+        let weatherModel = WeatherModel(conditionId: conditionId, cityName: "Antwerp", temperature: 20)
+        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
+        // then
+        XCTAssertEqual(viewModel.weatherConditionName, "cloud.fog")
+    }
+    
+    func testConditionName800() {
+        // given
+        let conditionId = 800
+        // when
+        let weatherModel = WeatherModel(conditionId: conditionId, cityName: "Antwerp", temperature: 20)
+        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
+        // then
+        XCTAssertEqual(viewModel.weatherConditionName, "sun.max")
+    }
+    
+    func testConditionName8xx() {
+        // given
+        let conditionId = Int.random(in: 801...804)
+        // when
+        let weatherModel = WeatherModel(conditionId: conditionId, cityName: "Antwerp", temperature: 20)
+        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
+        // then
+        XCTAssertEqual(viewModel.weatherConditionName, "cloud.bolt")
+    }
+    
+    func testConditionNameDefault() {
+        // given
+        let conditionId = Int.random(in: 804...1000)
+        // when
+        let weatherModel = WeatherModel(conditionId: conditionId, cityName: "Antwerp", temperature: 20)
+        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
+        // then
+        XCTAssertEqual(viewModel.weatherConditionName, "cloud")
+    }
 }
 
 // MARK: - WeatherViewModelDelegate
