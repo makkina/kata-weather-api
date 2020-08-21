@@ -45,4 +45,8 @@ extension WeatherClient {
 
         return WeatherModelDTOMapper.map(weatherModelDTO)
     }
+    
+    func isLoading() -> Bool {
+        return self.state.isLoading
+    }
 }

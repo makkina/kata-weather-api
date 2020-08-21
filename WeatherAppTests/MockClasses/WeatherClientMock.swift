@@ -10,14 +10,19 @@ import Foundation
 @testable import WeatherApp
 
 class WeatherClientMock: WeatherClientProtocol {
-    
+
     private(set) var urlStringReceived: String?
     var mockResult: WeatherModel?
     var mockError: Error?
+    var mockState: State?
     
     func getWeather(with urlString: String, completion: @escaping ((WeatherModel?, Error?) -> Void)) {
         
         urlStringReceived = urlString
         completion(mockResult, mockError)
+    }
+    
+    func isLoading() -> Bool {
+        return mockState == .loading
     }
 }

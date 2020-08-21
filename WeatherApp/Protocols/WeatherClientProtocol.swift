@@ -9,9 +9,11 @@
 import Foundation
 
 protocol WeatherClientProtocol {
-    
+
     func getWeather(
         with urlString: String,
         completion: @escaping ((WeatherModel?, Error?) -> Void)
     )
+    
+    func isLoading() -> Bool
 }
