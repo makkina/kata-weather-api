@@ -9,8 +9,6 @@
 import XCTest
 @testable import WeatherApp
 
-// MARK: - Tests
-
 class NetworkClientTests: XCTestCase {
     
     var error: Error!
@@ -144,5 +142,23 @@ class NetworkClientTests: XCTestCase {
         // then
         wait(for: [queryExpectation], timeout: 5)
         XCTAssertNil(self.error)
+    }
+    
+    func testCompletionHandlerExecutesOnTheMainThrea() {
+        // given
+        let networkClient = NetworkClient()
+        let urlString = "https://google.be"
+        let queryExpectation = XCTestExpectation(description: "Completion handler invoked with success")
+        var isMainThread = false
+        
+        // when
+        networkClient.get(urlString: urlString) { (_ data, _ error) in
+            isMainThread = Thread.isMainThread
+            queryExpectation.fulfill()
+        }
+        
+        // then
+        wait(for: [queryExpectation], timeout: 5)
+        XCTAssertTrue(isMainThread)
     }
 }

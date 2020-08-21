@@ -22,7 +22,9 @@ final class NetworkClient: NetworkClientProtocol {
         if let safeUrl = URL(string: urlString) {
             let request = generateGetRequestURL(url: safeUrl)
             let dataTask = urlSession.dataTask(with: request) { (responseData, _ urlResponse, responseError) in
-                completion(responseData, responseError)
+                DispatchQueue.main.async {
+                    completion(responseData, responseError)
+                }
             }
             dataTask.resume()
         }
