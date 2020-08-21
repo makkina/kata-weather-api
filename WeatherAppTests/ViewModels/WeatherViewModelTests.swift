@@ -35,7 +35,7 @@ class WeatherViewModelTests: XCTestCase {
     func testCanFetchWeatherModelUsingNetworkClient() {
         // given
         let cityName = "Antwerp"
-        let weatherModelMock = WeatherModel(conditionId: 200, cityName: cityName, temperature: 23)
+        let weatherModelMock = Mock.weatherModel(nil, cityName, nil)
         weatherClientMock.mockResult = weatherModelMock
         
         // when
@@ -51,8 +51,7 @@ class WeatherViewModelTests: XCTestCase {
     
     func testCanReturnEmptyWeatherModelUsingNetworkClient() {
          // given
-        let errorMock = NSError.init(domain: "Error", code: 304, userInfo: nil)
-        weatherClientMock.mockError = errorMock
+        weatherClientMock.mockError = Mock.error()
         
         // when
         let viewModel = WeatherViewModel(

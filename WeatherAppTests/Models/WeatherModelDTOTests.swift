@@ -13,11 +13,7 @@ class WeatherModelDTOTests: XCTestCase {
     
     func testWeatherModelDtoMapperForTemperature() {
         // given
-        let weatherModelDto = WeatherModelDTO(
-            name: "Antwerp",
-            main: MainDTO(temp: 20),
-            weather: [WeatherDTO(id: 200)]
-        )
+        let weatherModelDto = Mock.weatherModelDTO()
         // when
         let weatherModel = WeatherModelDTOMapper.map(weatherModelDto)
         // then
@@ -26,11 +22,7 @@ class WeatherModelDTOTests: XCTestCase {
     
     func testWeatherModelDtoMapperForCityName() {
         // given
-        let weatherModelDto = WeatherModelDTO(
-            name: "Antwerp",
-            main: MainDTO(temp: 20),
-            weather: [WeatherDTO(id: 200)]
-        )
+        let weatherModelDto = Mock.weatherModelDTO()
         // when
         let weatherModel = WeatherModelDTOMapper.map(weatherModelDto)
         // then
@@ -39,11 +31,7 @@ class WeatherModelDTOTests: XCTestCase {
     
     func testWeatherModelDtoMapperForWeatherConditionId() {
         // given
-        let weatherModelDto = WeatherModelDTO(
-            name: "Antwerp",
-            main: MainDTO(temp: 20),
-            weather: [WeatherDTO(id: 200)]
-        )
+        let weatherModelDto = Mock.weatherModelDTO()
         // when
         let weatherModel = WeatherModelDTOMapper.map(weatherModelDto)
         // then

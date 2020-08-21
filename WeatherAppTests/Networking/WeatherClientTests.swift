@@ -43,11 +43,7 @@ class WeatherClientTests: XCTestCase {
     
     func testCanInvokeCompletionHandlerWithError() {
         // given
-        networkClient.mockError = NSError.init(
-            domain: "Error",
-            code: 405,
-            userInfo: nil
-        )
+        networkClient.mockError = Mock.error()
         let weatherClient = WeatherClient(networkClient: networkClient)
         var error: Error?
         
@@ -66,11 +62,7 @@ class WeatherClientTests: XCTestCase {
         // given
         networkClient.mockResult = nil
         let weatherClient = WeatherClient(networkClient: networkClient)
-        var weatherModel: WeatherModel? = WeatherModel(
-            conditionId: 200,
-            cityName: "Brussels",
-            temperature: 20
-        )
+        var weatherModel: WeatherModel? = Mock.weatherModel()
         
         // when
         weatherClient.getWeather(with: "Brussels") { ( responseWeatherModel, _ responseError) in
