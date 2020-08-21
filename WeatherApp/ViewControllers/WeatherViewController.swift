@@ -21,7 +21,6 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupInitialView()
         viewModel.delegate = self
     }
     
@@ -29,13 +28,6 @@ class WeatherViewController: UIViewController {
         if loader.isHidden {
             viewModel.fetchWeather(city: sender.currentTitle!)
         }
-    }
-    
-    private func setupInitialView() {
-        loader.stopAnimating()
-        weatherLabel.isHidden = false
-        weatherLabel.text = Constants.degreesCelcius
-        weatherImageView.image = UIImage(systemName: "sun.min")
     }
 }
 
