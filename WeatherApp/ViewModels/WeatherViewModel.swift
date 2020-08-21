@@ -20,6 +20,19 @@ class WeatherViewModel {
     var weatherClient: WeatherClientProtocol
     private let validCities: [String]
     
+    // MARK: - View Properties
+    
+    var weatherLabelText: String {
+        guard weatherModel?.temperature != nil else {
+            return "°C"
+        }
+        return String(format: "%.1f °C", weatherModel!.temperature)
+    }
+    
+    var weatherLabelIsHidden: Bool {
+        return weatherClient.isLoading()
+    }
+    
     // MARK: - Init
     
     init(weatherModel: WeatherModel?, weatherClient: WeatherClientProtocol) {
@@ -30,7 +43,7 @@ class WeatherViewModel {
     
     func fetchWeather(city: String) {
         delegate?.willLoadData()
-     
+        
         // Check for valid city
         guard validCities.contains(city) else {
             self.delegate?.didLoadData()

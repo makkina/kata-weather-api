@@ -97,6 +97,54 @@ class WeatherViewModelTests: XCTestCase {
         wait(for: [queryExpectation], timeout: 3)
         XCTAssertEqual(viewModel.weatherModel?.cityName, cityName)
     }
+    
+    func testWeatherLabelIsHidden() {
+        // given
+        let weatherClientMock = WeatherClientMock()
+        weatherClientMock.mockState = .loading
+        
+        // when
+        let viewModel = WeatherViewModel(weatherModel: nil, weatherClient: weatherClientMock)
+        
+        // then
+        XCTAssertEqual(viewModel.weatherLabelIsHidden, true)
+    }
+    
+    func testWeatherLabelIsNotHidden() {
+        // given
+        let weatherClientMock = WeatherClientMock()
+        weatherClientMock.mockState = .notLoading
+        
+        // when
+        let viewModel = WeatherViewModel(weatherModel: nil, weatherClient: weatherClientMock)
+        
+        // then
+        XCTAssertEqual(viewModel.weatherLabelIsHidden, false)
+    }
+    
+    func testWeatherLabelDisplaysCelciusSymbolWhenTemperatureIsSet() {
+        // given
+        let cityName = "Antwerp"
+        let weatherClientMock = WeatherClientMock()
+        let weatherModelMock = WeatherModel(conditionId: 200, cityName: cityName, temperature: 23)
+        
+        // when
+        let viewModel = WeatherViewModel(weatherModel: weatherModelMock, weatherClient: weatherClientMock)
+        
+        // then
+        XCTAssertEqual(viewModel.weatherLabelText, "23.0 °C")
+    }
+    
+    func testWeatherLabelDisplayWhenTemperatureIsNoSet() {
+        // when
+        let viewModel = WeatherViewModel(
+            weatherModel: nil,
+            weatherClient: WeatherClientMock()
+        )
+        
+        // then
+        XCTAssertEqual(viewModel.weatherLabelText, "°C")
+    }
 }
 
 // MARK: - WeatherViewModelDelegate
