@@ -76,14 +76,11 @@ class WeatherClientTests: XCTestCase {
     func testCanInvokeCompletionHandlerWithWeatherModel() {
         // swiftlint:disable force_try
         let encoder = JSONEncoder()
-        let weatherModelDto = WeatherModelDTO(
-            name: "Brussels",
-            main: MainDTO(temp: 20),
-            weather: [WeatherDTO(id: 200)]
-        )
+        let weatherModelDto = Mock.weatherModelDTO("Brussels", 20, 200)
         networkClient.mockResult = try! encoder.encode(weatherModelDto)
         let weatherClient = WeatherClient(networkClient: networkClient)
         var weatherModel: WeatherModel?
+        let weatherModelMock = Mock.weatherModel(200, "Brussels", 20)
         // swiftlint:enable force_try
         
         // when
@@ -92,7 +89,7 @@ class WeatherClientTests: XCTestCase {
         }
         
         // then
-        XCTAssertEqual(weatherModel?.cityName, "Brussels")
+        XCTAssertEqual(weatherModelMock, weatherModel)
     }
 
     func testWillInitiateWithStateNotLoading() {
