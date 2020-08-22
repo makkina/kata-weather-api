@@ -11,9 +11,9 @@ import XCTest
 
 class WeatherViewModelTests: XCTestCase {
     
-    var queryExpectation: XCTestExpectation!
-    var viewModel: WeatherViewModel!
-    var weatherClientMock: WeatherClientMock!
+    private var queryExpectation: XCTestExpectation!
+    private var viewModel: WeatherViewModel!
+    private var weatherClientMock: WeatherClientMock!
     
     override func setUp() {
         super.setUp()

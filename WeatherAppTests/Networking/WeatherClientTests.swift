@@ -11,7 +11,7 @@ import XCTest
 
 class WeatherClientTests: XCTestCase {
     
-    var networkClient: NetworkClientMock!
+    private var networkClient: NetworkClientMock!
     
     override func setUp() {
         super.setUp()

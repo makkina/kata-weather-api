@@ -11,8 +11,8 @@ import XCTest
 
 class NetworkClientTests: XCTestCase {
     
-    var error: Error!
-    var urlSessionMock: URLSessionMock!
+    private var error: Error!
+    private var urlSessionMock: URLSessionMock!
     
     override func setUp() {
         super.setUp()
