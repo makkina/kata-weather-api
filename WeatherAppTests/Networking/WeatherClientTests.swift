@@ -95,31 +95,6 @@ class WeatherClientTests: XCTestCase {
         XCTAssertEqual(weatherModel?.cityName, "Brussels")
     }
 
-    func testCanReturnWeatherModelFromNetwork() {
-        // given
-        let networkClient = NetworkClient()
-        let weatherClient = WeatherClient(networkClient: networkClient)
-        var weatherModel: WeatherModel?
-        let queryExpectation = XCTestExpectation(description: "Completion handler invoked with success")
-        queryExpectation.expectedFulfillmentCount = 1
-        let baseUrl = Constants.baseURL
-        let token = Secrets.openWeatherTestToken
-        let city = "Brussels"
-        let urlString = "\(baseUrl)&appid=\(token)&q=\(city)"
-        
-        // when
-        weatherClient.getWeather(with: urlString) { ( responseWeatherModel, _ responseError) in
-            if let safeWeatherModel = responseWeatherModel {
-                weatherModel = safeWeatherModel
-                queryExpectation.fulfill()
-            }
-        }
-        
-        // then
-        wait(for: [queryExpectation], timeout: 3)
-        XCTAssertEqual(weatherModel?.cityName, "Brussels")
-    }
-    
     func testWillInitiateWithStateNotLoading() {
         let weatherClient = WeatherClient(networkClient: NetworkClient())
         XCTAssertEqual(weatherClient.state, .notLoading)
@@ -145,5 +120,35 @@ class WeatherClientTests: XCTestCase {
         // then
         wait(for: [queryExpectation], timeout: 3)
         XCTAssertEqual(weatherClient.state, .notLoading)
+    }
+    
+    // MARK: - Network Call
+    /**
+     The following is an integration test. Ideally we could move it into a seperate target.
+     This call is different from the previous as this actually hits the network.
+     */
+    func testCanReturnWeatherModelFromNetwork() {
+        // given
+        let networkClient = NetworkClient()
+        let weatherClient = WeatherClient(networkClient: networkClient)
+        var weatherModel: WeatherModel?
+        let queryExpectation = XCTestExpectation(description: "Completion handler invoked with success")
+        queryExpectation.expectedFulfillmentCount = 1
+        let baseUrl = Constants.baseURL
+        let token = Secrets.openWeatherTestToken
+        let city = "Brussels"
+        let urlString = "\(baseUrl)&appid=\(token)&q=\(city)"
+        
+        // when
+        weatherClient.getWeather(with: urlString) { ( responseWeatherModel, _ responseError) in
+            if let safeWeatherModel = responseWeatherModel {
+                weatherModel = safeWeatherModel
+                queryExpectation.fulfill()
+            }
+        }
+        
+        // then
+        wait(for: [queryExpectation], timeout: 3)
+        XCTAssertEqual(weatherModel?.cityName, "Brussels")
     }
 }

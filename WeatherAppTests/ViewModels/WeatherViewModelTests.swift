@@ -70,21 +70,6 @@ class WeatherViewModelTests: XCTestCase {
         XCTAssertNil(viewModel.weatherModel)
     }
     
-    func testCanFillWeatherModel() {
-        // given
-        let cityName = "Brussels"
-        viewModel.delegate = self
-        queryExpectation = XCTestExpectation(description: "fillUpWeatherModel")
-        queryExpectation.expectedFulfillmentCount = 2
-        
-        // when
-        viewModel.fetchWeather(city: cityName)
-        
-        // then
-        wait(for: [queryExpectation], timeout: 3)
-        XCTAssertEqual(viewModel.weatherModel?.cityName, cityName)
-    }
-    
     func testWeatherLabelIsHidden() {
         // given
         weatherClientMock.mockState = .loading
@@ -222,6 +207,26 @@ class WeatherViewModelTests: XCTestCase {
         viewModel.fetchWeather(city: "Paris")
         // then
         XCTAssertNil(viewModel.weatherModel)
+    }
+    
+    // MARK: - Network Call
+    /**
+     The following is an integration test. Ideally we could move it into a seperate target.
+     This call is different from the previous as this actually hits the network.
+     */
+    func testCanFillWeatherModel() {
+        // given
+        let cityName = "Brussels"
+        viewModel.delegate = self
+        queryExpectation = XCTestExpectation(description: "fillUpWeatherModel")
+        queryExpectation.expectedFulfillmentCount = 2
+        
+        // when
+        viewModel.fetchWeather(city: cityName)
+        
+        // then
+        wait(for: [queryExpectation], timeout: 3)
+        XCTAssertEqual(viewModel.weatherModel?.cityName, cityName)
     }
 }
 

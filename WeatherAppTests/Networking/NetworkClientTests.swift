@@ -68,7 +68,7 @@ class NetworkClientTests: XCTestCase {
         // given
         let client = NetworkClient(urlSession: urlSessionMock)
         let queryExpectation = XCTestExpectation(description: "Completion handler invokes")
-         queryExpectation.expectedFulfillmentCount = 1
+        queryExpectation.expectedFulfillmentCount = 1
         
         // when
         client.get(urlString: "Antwerp") { ( _ responseData, _ responseError ) in
@@ -123,7 +123,10 @@ class NetworkClientTests: XCTestCase {
     }
     
     // MARK: - Network Call
-    
+    /**
+     The following are integration tests. Ideally we could move them into a seperate target.
+     These calls are different from the previous as they actually hit the network.
+     */
     func testCanConnectWithWeb() {
         // given
         let networkClient = NetworkClient()
@@ -143,7 +146,7 @@ class NetworkClientTests: XCTestCase {
         wait(for: [queryExpectation], timeout: 5)
         XCTAssertNil(self.error)
     }
-    
+
     func testCompletionHandlerExecutesOnTheMainThrea() {
         // given
         let networkClient = NetworkClient()
