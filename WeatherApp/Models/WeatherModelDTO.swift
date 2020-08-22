@@ -22,6 +22,10 @@ struct WeatherDTO: Codable {
     let id: Int
 }
 
+/**
+ Ideally we would add a safeguard and return an optional here, as `dto.weather` could theoretically be empty.
+ However we know, openWeatherApi will always return at minimum 1 single weatherObject.
+ */
 struct WeatherModelDTOMapper {
     static func map(_ dto: WeatherModelDTO) -> WeatherModel {
         return WeatherModel(
