@@ -33,8 +33,7 @@ class WeatherViewModelTests: XCTestCase {
     
     func testCanFetchWeatherModelUsingNetworkClient() {
         // given
-        let weatherModelMock = Mock.weatherModel(nil, "Antwerp", nil)
-        weatherClientMock.mockResult = weatherModelMock
+        weatherClientMock.mockResult = Mock.weatherModel(nil, "Antwerp", nil)
 
         // when
         viewModel = WeatherViewModel(weatherClient: weatherClientMock)
@@ -88,24 +87,18 @@ class WeatherViewModelTests: XCTestCase {
     
     func testWeatherLabelIsHidden() {
         // given
-        let weatherClientMock = WeatherClientMock()
         weatherClientMock.mockState = .loading
-        
         // when
         viewModel = WeatherViewModel(weatherClient: weatherClientMock)
-        
         // then
         XCTAssertEqual(viewModel.weatherLabelIsHidden, true)
     }
     
     func testWeatherLabelIsNotHidden() {
         // given
-        let weatherClientMock = WeatherClientMock()
         weatherClientMock.mockState = .notLoading
-        
         // when
         viewModel = WeatherViewModel(weatherClient: weatherClientMock)
-        
         // then
         XCTAssertEqual(viewModel.weatherLabelIsHidden, false)
     }
@@ -113,9 +106,7 @@ class WeatherViewModelTests: XCTestCase {
     func testWeatherLabelDisplaysCelciusSymbolWhenTemperatureIsSet() {
         // given
         let cityName = "Antwerp"
-        let weatherClientMock = WeatherClientMock()
-        let weatherModelMock = WeatherModel(conditionId: 200, cityName: cityName, temperature: 23)
-        weatherClientMock.mockResult = weatherModelMock
+        weatherClientMock.mockResult = Mock.weatherModel(200, cityName, 23)
         
         // when
         viewModel = WeatherViewModel(weatherClient: weatherClientMock)
