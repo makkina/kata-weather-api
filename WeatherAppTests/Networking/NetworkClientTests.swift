@@ -80,7 +80,7 @@ class NetworkClientTests: XCTestCase {
         XCTAssertTrue(true)
     }
     
-    func testCanInvoteCompletionBlockWithResponse() {
+    func testCanInvokeCompletionBlockWithResponse() {
         // given
         urlSessionMock.mockData = "{json:data}".data(using: .utf8)
         let client = NetworkClient(urlSession: urlSessionMock)
@@ -101,7 +101,7 @@ class NetworkClientTests: XCTestCase {
         XCTAssertNotNil(data)
     }
     
-    func testCanInvoteCompletionBlockWithError() {
+    func testCanInvokeCompletionBlockWithError() {
         // given
         urlSessionMock.mockError = NSError.init(domain: "Error", code: 405, userInfo: nil)
         let client = NetworkClient(urlSession: urlSessionMock)
