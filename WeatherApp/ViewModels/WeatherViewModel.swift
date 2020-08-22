@@ -60,8 +60,7 @@ class WeatherViewModel {
     
     // MARK: - Init
     
-    init(weatherModel: WeatherModel?, weatherClient: WeatherClientProtocol) {
-        self.weatherModel = weatherModel
+    init(weatherClient: WeatherClientProtocol) {
         self.weatherClient = weatherClient
         self.validCities = Constants.validCities
     }

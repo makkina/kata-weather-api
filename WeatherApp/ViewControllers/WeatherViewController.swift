@@ -11,8 +11,9 @@ import UIKit
 class WeatherViewController: UIViewController {
 
     var viewModel: WeatherViewModel = WeatherViewModel(
-        weatherModel: nil,
-        weatherClient: WeatherClient(networkClient: NetworkClient())
+        weatherClient: WeatherClient(
+            networkClient: NetworkClient()
+        )
     )
     
     @IBOutlet weak var weatherImageView: UIImageView!

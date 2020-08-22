@@ -18,7 +18,6 @@ class WeatherViewModelTests: XCTestCase {
     override func setUp() {
         super.setUp()
         viewModel = WeatherViewModel(
-            weatherModel: nil,
             weatherClient: WeatherClient(
                 networkClient: NetworkClient()
             )
@@ -34,16 +33,12 @@ class WeatherViewModelTests: XCTestCase {
     
     func testCanFetchWeatherModelUsingNetworkClient() {
         // given
-        let cityName = "Antwerp"
-        let weatherModelMock = Mock.weatherModel(nil, cityName, nil)
+        let weatherModelMock = Mock.weatherModel(nil, "Antwerp", nil)
         weatherClientMock.mockResult = weatherModelMock
-        
+
         // when
-        let viewModel = WeatherViewModel(
-            weatherModel: nil,
-            weatherClient: weatherClientMock
-        )
-        viewModel.fetchWeather(city: cityName)
+        viewModel = WeatherViewModel(weatherClient: weatherClientMock)
+        viewModel.fetchWeather(city: "Antwerp")
         
         // then
         XCTAssertEqual(viewModel.weatherModel?.cityName, "Antwerp")
@@ -54,10 +49,7 @@ class WeatherViewModelTests: XCTestCase {
         weatherClientMock.mockError = Mock.error()
         
         // when
-        let viewModel = WeatherViewModel(
-            weatherModel: nil,
-            weatherClient: weatherClientMock
-        )
+        viewModel = WeatherViewModel(weatherClient: weatherClientMock)
         viewModel.fetchWeather(city: "Antwerp")
 
         // then
@@ -66,20 +58,17 @@ class WeatherViewModelTests: XCTestCase {
     
     func testWillOnlyFetchWeatherForValidCities() {
         // given
-        let _viewModel = WeatherViewModel(
-            weatherModel: nil,
-            weatherClient: WeatherClient(networkClient: NetworkClient())
-        )
-        _viewModel.delegate = self
+        viewModel = WeatherViewModel(weatherClient: WeatherClient(networkClient: NetworkClient()))
+        viewModel.delegate = self
         queryExpectation = XCTestExpectation(description: "doesNotFetchWeatherModel")
         queryExpectation.expectedFulfillmentCount = 2
         
         // when
-        _viewModel.fetchWeather(city: "Paris")
+        viewModel.fetchWeather(city: "Paris")
             
         // then
         wait(for: [queryExpectation], timeout: 3)
-        XCTAssertNil(_viewModel.weatherModel)
+        XCTAssertNil(viewModel.weatherModel)
     }
     
     func testCanFillWeatherModel() {
@@ -103,7 +92,7 @@ class WeatherViewModelTests: XCTestCase {
         weatherClientMock.mockState = .loading
         
         // when
-        let viewModel = WeatherViewModel(weatherModel: nil, weatherClient: weatherClientMock)
+        viewModel = WeatherViewModel(weatherClient: weatherClientMock)
         
         // then
         XCTAssertEqual(viewModel.weatherLabelIsHidden, true)
@@ -115,7 +104,7 @@ class WeatherViewModelTests: XCTestCase {
         weatherClientMock.mockState = .notLoading
         
         // when
-        let viewModel = WeatherViewModel(weatherModel: nil, weatherClient: weatherClientMock)
+        viewModel = WeatherViewModel(weatherClient: weatherClientMock)
         
         // then
         XCTAssertEqual(viewModel.weatherLabelIsHidden, false)
@@ -126,9 +115,11 @@ class WeatherViewModelTests: XCTestCase {
         let cityName = "Antwerp"
         let weatherClientMock = WeatherClientMock()
         let weatherModelMock = WeatherModel(conditionId: 200, cityName: cityName, temperature: 23)
+        weatherClientMock.mockResult = weatherModelMock
         
         // when
-        let viewModel = WeatherViewModel(weatherModel: weatherModelMock, weatherClient: weatherClientMock)
+        viewModel = WeatherViewModel(weatherClient: weatherClientMock)
+        viewModel.fetchWeather(city: cityName)
         
         // then
         XCTAssertEqual(viewModel.weatherLabelText, "23.0 °C")
@@ -136,10 +127,7 @@ class WeatherViewModelTests: XCTestCase {
     
     func testWeatherLabelDisplayWhenTemperatureIsNoSet() {
         // when
-        let viewModel = WeatherViewModel(
-            weatherModel: nil,
-            weatherClient: WeatherClientMock()
-        )
+        viewModel = WeatherViewModel(weatherClient: WeatherClientMock())
         
         // then
         XCTAssertEqual(viewModel.weatherLabelText, "°C")
@@ -151,8 +139,9 @@ class WeatherViewModelTests: XCTestCase {
         // given
         let conditionId = Int.random(in: 200...232)
         // when
-        let weatherModel = WeatherModel(conditionId: conditionId, cityName: "Antwerp", temperature: 20)
-        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
+        weatherClientMock.mockResult = Mock.weatherModel(conditionId)
+        viewModel = WeatherViewModel(weatherClient: weatherClientMock)
+        viewModel.fetchWeather(city: "Brussels")
         // then
         XCTAssertEqual(viewModel.weatherConditionName, "cloud.bolt")
     }
@@ -161,8 +150,9 @@ class WeatherViewModelTests: XCTestCase {
         // given
         let conditionId = Int.random(in: 300...321)
         // when
-        let weatherModel = WeatherModel(conditionId: conditionId, cityName: "Antwerp", temperature: 20)
-        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
+        weatherClientMock.mockResult = Mock.weatherModel(conditionId)
+        viewModel = WeatherViewModel(weatherClient: weatherClientMock)
+        viewModel.fetchWeather(city: "Brussels")
         // then
         XCTAssertEqual(viewModel.weatherConditionName, "cloud.drizzle")
     }
@@ -171,8 +161,9 @@ class WeatherViewModelTests: XCTestCase {
         // given
         let conditionId = Int.random(in: 500...521)
         // when
-        let weatherModel = WeatherModel(conditionId: conditionId, cityName: "Antwerp", temperature: 20)
-        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
+        weatherClientMock.mockResult = Mock.weatherModel(conditionId)
+        viewModel = WeatherViewModel(weatherClient: weatherClientMock)
+        viewModel.fetchWeather(city: "Brussels")
         // then
         XCTAssertEqual(viewModel.weatherConditionName, "cloud.rain")
     }
@@ -181,8 +172,9 @@ class WeatherViewModelTests: XCTestCase {
         // given
         let conditionId = Int.random(in: 600...622)
         // when
-        let weatherModel = WeatherModel(conditionId: conditionId, cityName: "Antwerp", temperature: 20)
-        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
+        weatherClientMock.mockResult = Mock.weatherModel(conditionId)
+        viewModel = WeatherViewModel(weatherClient: weatherClientMock)
+        viewModel.fetchWeather(city: "Brussels")
         // then
         XCTAssertEqual(viewModel.weatherConditionName, "cloud.snow")
     }
@@ -191,8 +183,9 @@ class WeatherViewModelTests: XCTestCase {
         // given
         let conditionId = Int.random(in: 701...781)
         // when
-        let weatherModel = WeatherModel(conditionId: conditionId, cityName: "Antwerp", temperature: 20)
-        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
+        weatherClientMock.mockResult = Mock.weatherModel(conditionId)
+        viewModel = WeatherViewModel(weatherClient: weatherClientMock)
+        viewModel.fetchWeather(city: "Brussels")
         // then
         XCTAssertEqual(viewModel.weatherConditionName, "cloud.fog")
     }
@@ -201,8 +194,9 @@ class WeatherViewModelTests: XCTestCase {
         // given
         let conditionId = 800
         // when
-        let weatherModel = WeatherModel(conditionId: conditionId, cityName: "Antwerp", temperature: 20)
-        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
+        weatherClientMock.mockResult = Mock.weatherModel(conditionId)
+        viewModel = WeatherViewModel(weatherClient: weatherClientMock)
+        viewModel.fetchWeather(city: "Brussels")
         // then
         XCTAssertEqual(viewModel.weatherConditionName, "sun.max")
     }
@@ -211,8 +205,9 @@ class WeatherViewModelTests: XCTestCase {
         // given
         let conditionId = Int.random(in: 801...804)
         // when
-        let weatherModel = WeatherModel(conditionId: conditionId, cityName: "Antwerp", temperature: 20)
-        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
+        weatherClientMock.mockResult = Mock.weatherModel(conditionId)
+        viewModel = WeatherViewModel(weatherClient: weatherClientMock)
+        viewModel.fetchWeather(city: "Brussels")
         // then
         XCTAssertEqual(viewModel.weatherConditionName, "cloud.bolt")
     }
@@ -221,18 +216,18 @@ class WeatherViewModelTests: XCTestCase {
         // given
         let conditionId = Int.random(in: 804...1000)
         // when
-        let weatherModel = WeatherModel(conditionId: conditionId, cityName: "Antwerp", temperature: 20)
-        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
+        weatherClientMock.mockResult = Mock.weatherModel(conditionId)
+        viewModel = WeatherViewModel(weatherClient: weatherClientMock)
+        viewModel.fetchWeather(city: "Brussels")
         // then
         XCTAssertEqual(viewModel.weatherConditionName, "cloud")
     }
     
     func testFetchingInvalidCityClearsOutWeatherModel() {
         // given
-        let weatherModel = WeatherModel(conditionId: 200, cityName: "Antwerp", temperature: 20)
-        let viewModel = WeatherViewModel(weatherModel: weatherModel, weatherClient: WeatherClientMock())
-        
+        weatherClientMock.mockResult = Mock.weatherModel()
         // when
+        viewModel = WeatherViewModel(weatherClient: weatherClientMock)
         viewModel.fetchWeather(city: "Paris")
         // then
         XCTAssertNil(viewModel.weatherModel)
