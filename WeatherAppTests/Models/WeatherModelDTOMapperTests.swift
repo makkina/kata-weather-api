@@ -9,7 +9,7 @@
 import XCTest
 @testable import WeatherApp
 
-class WeatherModelDTOTests: XCTestCase {
+class WeatherModelDTOMapperTests: XCTestCase {
     
     func testWeatherModelDtoMapperForTemperature() {
         // given
