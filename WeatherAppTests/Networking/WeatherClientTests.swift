@@ -43,7 +43,7 @@ class WeatherClientTests: XCTestCase {
     
     func testCanInvokeCompletionHandlerWithError() {
         // given
-        networkClient.mockError = Mock.error()
+        networkClient.mockError = WeatherModelFactory.error()
         let weatherClient = WeatherClient(networkClient: networkClient)
         var error: Error?
         
@@ -62,7 +62,7 @@ class WeatherClientTests: XCTestCase {
         // given
         networkClient.mockResult = nil
         let weatherClient = WeatherClient(networkClient: networkClient)
-        var weatherModel: WeatherModel? = Mock.weatherModel()
+        var weatherModel: WeatherModel? = WeatherModelFactory.weatherModel()
         
         // when
         weatherClient.getWeather(with: "Brussels") { ( responseWeatherModel, _ responseError) in
@@ -76,11 +76,11 @@ class WeatherClientTests: XCTestCase {
     func testCanInvokeCompletionHandlerWithWeatherModel() {
         // swiftlint:disable force_try
         let encoder = JSONEncoder()
-        let weatherModelDto = Mock.weatherModelDTO("Brussels", 20, 200)
+        let weatherModelDto = WeatherModelFactory.weatherModelDTO("Brussels", 20, 200)
         networkClient.mockResult = try! encoder.encode(weatherModelDto)
         let weatherClient = WeatherClient(networkClient: networkClient)
         var weatherModel: WeatherModel?
-        let weatherModelMock = Mock.weatherModel(200, "Brussels", 20)
+        let weatherModelMock = WeatherModelFactory.weatherModel(200, "Brussels", 20)
         // swiftlint:enable force_try
         
         // when

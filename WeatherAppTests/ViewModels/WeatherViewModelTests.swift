@@ -33,7 +33,7 @@ class WeatherViewModelTests: XCTestCase {
     
     func testCanFetchWeatherModelUsingNetworkClient() {
         // given
-        weatherClientMock.mockResult = Mock.weatherModel(nil, "Antwerp", nil)
+        weatherClientMock.mockResult = WeatherModelFactory.weatherModel(nil, "Antwerp", nil)
 
         // when
         viewModel = WeatherViewModel(weatherClient: weatherClientMock)
@@ -45,7 +45,7 @@ class WeatherViewModelTests: XCTestCase {
     
     func testCanReturnEmptyWeatherModelUsingNetworkClient() {
          // given
-        weatherClientMock.mockError = Mock.error()
+        weatherClientMock.mockError = WeatherModelFactory.error()
         
         // when
         viewModel = WeatherViewModel(weatherClient: weatherClientMock)
@@ -91,7 +91,7 @@ class WeatherViewModelTests: XCTestCase {
     func testWeatherLabelDisplaysCelciusSymbolWhenTemperatureIsSet() {
         // given
         let cityName = "Antwerp"
-        weatherClientMock.mockResult = Mock.weatherModel(200, cityName, 23)
+        weatherClientMock.mockResult = WeatherModelFactory.weatherModel(200, cityName, 23)
         
         // when
         viewModel = WeatherViewModel(weatherClient: weatherClientMock)
@@ -115,7 +115,7 @@ class WeatherViewModelTests: XCTestCase {
         // given
         let conditionId = Int.random(in: 200...232)
         // when
-        weatherClientMock.mockResult = Mock.weatherModel(conditionId)
+        weatherClientMock.mockResult = WeatherModelFactory.weatherModel(conditionId)
         viewModel = WeatherViewModel(weatherClient: weatherClientMock)
         viewModel.fetchWeather(city: "Brussels")
         // then
@@ -126,7 +126,7 @@ class WeatherViewModelTests: XCTestCase {
         // given
         let conditionId = Int.random(in: 300...321)
         // when
-        weatherClientMock.mockResult = Mock.weatherModel(conditionId)
+        weatherClientMock.mockResult = WeatherModelFactory.weatherModel(conditionId)
         viewModel = WeatherViewModel(weatherClient: weatherClientMock)
         viewModel.fetchWeather(city: "Brussels")
         // then
@@ -137,7 +137,7 @@ class WeatherViewModelTests: XCTestCase {
         // given
         let conditionId = Int.random(in: 500...521)
         // when
-        weatherClientMock.mockResult = Mock.weatherModel(conditionId)
+        weatherClientMock.mockResult = WeatherModelFactory.weatherModel(conditionId)
         viewModel = WeatherViewModel(weatherClient: weatherClientMock)
         viewModel.fetchWeather(city: "Brussels")
         // then
@@ -148,7 +148,7 @@ class WeatherViewModelTests: XCTestCase {
         // given
         let conditionId = Int.random(in: 600...622)
         // when
-        weatherClientMock.mockResult = Mock.weatherModel(conditionId)
+        weatherClientMock.mockResult = WeatherModelFactory.weatherModel(conditionId)
         viewModel = WeatherViewModel(weatherClient: weatherClientMock)
         viewModel.fetchWeather(city: "Brussels")
         // then
@@ -159,7 +159,7 @@ class WeatherViewModelTests: XCTestCase {
         // given
         let conditionId = Int.random(in: 701...781)
         // when
-        weatherClientMock.mockResult = Mock.weatherModel(conditionId)
+        weatherClientMock.mockResult = WeatherModelFactory.weatherModel(conditionId)
         viewModel = WeatherViewModel(weatherClient: weatherClientMock)
         viewModel.fetchWeather(city: "Brussels")
         // then
@@ -170,7 +170,7 @@ class WeatherViewModelTests: XCTestCase {
         // given
         let conditionId = 800
         // when
-        weatherClientMock.mockResult = Mock.weatherModel(conditionId)
+        weatherClientMock.mockResult = WeatherModelFactory.weatherModel(conditionId)
         viewModel = WeatherViewModel(weatherClient: weatherClientMock)
         viewModel.fetchWeather(city: "Brussels")
         // then
@@ -181,7 +181,7 @@ class WeatherViewModelTests: XCTestCase {
         // given
         let conditionId = Int.random(in: 801...804)
         // when
-        weatherClientMock.mockResult = Mock.weatherModel(conditionId)
+        weatherClientMock.mockResult = WeatherModelFactory.weatherModel(conditionId)
         viewModel = WeatherViewModel(weatherClient: weatherClientMock)
         viewModel.fetchWeather(city: "Brussels")
         // then
@@ -192,7 +192,7 @@ class WeatherViewModelTests: XCTestCase {
         // given
         let conditionId = Int.random(in: 804...1000)
         // when
-        weatherClientMock.mockResult = Mock.weatherModel(conditionId)
+        weatherClientMock.mockResult = WeatherModelFactory.weatherModel(conditionId)
         viewModel = WeatherViewModel(weatherClient: weatherClientMock)
         viewModel.fetchWeather(city: "Brussels")
         // then
@@ -201,7 +201,7 @@ class WeatherViewModelTests: XCTestCase {
     
     func testFetchingInvalidCityClearsOutWeatherModel() {
         // given
-        weatherClientMock.mockResult = Mock.weatherModel()
+        weatherClientMock.mockResult = WeatherModelFactory.weatherModel()
         // when
         viewModel = WeatherViewModel(weatherClient: weatherClientMock)
         viewModel.fetchWeather(city: "Paris")

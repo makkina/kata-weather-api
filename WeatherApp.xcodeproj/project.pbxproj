@@ -40,7 +40,7 @@
 		F01C878E24EFF9DA004174A2 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01C878D24EFF9DA004174A2 /* State.swift */; };
 		F01C879024F021F7004174A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01C878F24F021F7004174A2 /* Constants.swift */; };
 		F01C879324F0221A004174A2 /* ConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01C879224F0221A004174A2 /* ConstantsTests.swift */; };
-		F0C079FA24F02C3B00C22F2B /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C079F924F02C3B00C22F2B /* Mock.swift */; };
+		F0C079FA24F02C3B00C22F2B /* WeatherModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C079F924F02C3B00C22F2B /* WeatherModelFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,7 +105,7 @@
 		F01C878D24EFF9DA004174A2 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		F01C878F24F021F7004174A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F01C879224F0221A004174A2 /* ConstantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsTests.swift; sourceTree = "<group>"; };
-		F0C079F924F02C3B00C22F2B /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
+		F0C079F924F02C3B00C22F2B /* WeatherModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModelFactory.swift; sourceTree = "<group>"; };
 		FC38472373D53C1A66C0994D /* Pods_WeatherApp_WeatherAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp_WeatherAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -334,7 +334,7 @@
 				F01C876D24EEDC02004174A2 /* URLSessionMock.swift */,
 				F01C876F24EEDCE7004174A2 /* NetworkClientMock.swift */,
 				F01C877D24EF1A21004174A2 /* WeatherClientMock.swift */,
-				F0C079F924F02C3B00C22F2B /* Mock.swift */,
+				F0C079F924F02C3B00C22F2B /* WeatherModelFactory.swift */,
 			);
 			path = MockClasses;
 			sourceTree = "<group>";
@@ -611,7 +611,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0C079FA24F02C3B00C22F2B /* Mock.swift in Sources */,
+				F0C079FA24F02C3B00C22F2B /* WeatherModelFactory.swift in Sources */,
 				F01C876124EE8E95004174A2 /* WeatherModelDTOMapperTests.swift in Sources */,
 				F01C877024EEDCE7004174A2 /* NetworkClientMock.swift in Sources */,
 				F01C875C24EE86CD004174A2 /* WeatherModelTests.swift in Sources */,

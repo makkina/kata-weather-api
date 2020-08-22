@@ -9,7 +9,7 @@
 import Foundation
 @testable import WeatherApp
 
-struct Mock {
+struct WeatherModelFactory {
     static func error () -> Error {
         return NSError.init(domain: "Error", code: 304, userInfo: nil)
     }
