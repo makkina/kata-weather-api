@@ -16,8 +16,8 @@ protocol WeatherViewModelDelegate: AnyObject {
 class WeatherViewModel {
     
     weak var delegate: WeatherViewModelDelegate?
-    var weatherModel: WeatherModel?
-    var weatherClient: WeatherClientProtocol
+    private(set) var weatherModel: WeatherModel?
+    private var weatherClient: WeatherClientProtocol
     private let validCities: [String]
     
     // MARK: - View Properties

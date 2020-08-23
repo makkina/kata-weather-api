@@ -111,6 +111,15 @@ class WeatherViewModelTests: XCTestCase {
     
     // MARK: - Test Weather Condition Name
     
+    func testConditionIdIsNil() {
+        // when
+        weatherClientMock.mockResult = nil
+        viewModel = WeatherViewModel(weatherClient: weatherClientMock)
+        viewModel.fetchWeather(city: "Brussels")
+        // then
+        XCTAssertEqual(viewModel.weatherConditionName, "sun.min")
+    }
+    
     func testConditionName2xx() {
         // given
         let conditionId = Int.random(in: 200...232)
