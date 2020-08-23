@@ -119,6 +119,15 @@ class WeatherClientTests: XCTestCase {
         XCTAssertEqual(weatherClient.state, .notLoading)
     }
     
+    func testWeatherClientIsLoadingState() {
+        // given
+        let weatherClient = WeatherClient(networkClient: NetworkClient())
+        // when
+        weatherClient.getWeather(with: "Antwerp") { (_ weatherModel, _ error) in }
+        // then
+        XCTAssertEqual(weatherClient.isLoading(), true)
+    }
+    
     // MARK: - Network Call
     /**
      The following is an integration test. Ideally we could move it into a seperate target.
