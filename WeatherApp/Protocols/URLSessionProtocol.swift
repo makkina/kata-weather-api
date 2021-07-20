@@ -10,7 +10,7 @@ import Foundation
 
 typealias URLSessionDataTaskCompletion = (Data?, URLResponse?, Error?) -> Void
 
-protocol URLSessionProtocol: class {
+protocol URLSessionProtocol: AnyObject {
     func dataTask(
         with request: URLRequest,
         completion: @escaping URLSessionDataTaskCompletion) -> URLSessionDataTaskProtocol
